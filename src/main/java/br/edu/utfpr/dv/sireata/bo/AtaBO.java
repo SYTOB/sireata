@@ -91,42 +91,6 @@ public class AtaBO {
 		}
 	}
 	
-	public List<Ata> listarPorOrgao(int idOrgao) throws Exception{
-		try{
-			AtaDAO dao = new AtaDAO();
-			
-			return dao.listarPorOrgao(idOrgao);
-		}catch(Exception e){
-			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
-			
-			throw new Exception(e.getMessage());
-		}
-	}
-	
-	public List<Ata> listarPorDepartamento(int idDepartamento) throws Exception{
-		try{
-			AtaDAO dao = new AtaDAO();
-			
-			return dao.listarPorDepartamento(idDepartamento);
-		}catch(Exception e){
-			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
-			
-			throw new Exception(e.getMessage());
-		}
-	}
-	
-	public List<Ata> listarPorCampus(int idCampus) throws Exception{
-		try{
-			AtaDAO dao = new AtaDAO();
-			
-			return dao.listarPorCampus(idCampus);
-		}catch(Exception e){
-			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
-			
-			throw new Exception(e.getMessage());
-		}
-	}
-	
 	public List<Ata> listarNaoPublicadas(int idUsuario) throws Exception{
 		try{
 			AtaDAO dao = new AtaDAO();
@@ -137,52 +101,91 @@ public class AtaBO {
 			
 			throw new Exception(e.getMessage());
 		}
+	}	
+	
+	public List<Ata> listarPorOrgao(int idOrgao, Integer idUsuario) throws Exception{
+		if(idUsuario != null){
+			try{
+				AtaDAO dao = new AtaDAO();
+				
+				return dao.listarPorOrgao(idOrgao, idUsuario);
+			}catch(Exception e){
+				Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+				
+				throw new Exception(e.getMessage());
+			}
+		}else{
+			try{
+				AtaDAO dao = new AtaDAO();
+				
+				return dao.listarPorOrgao(idOrgao);
+			}catch(Exception e){
+				Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+				
+				throw new Exception(e.getMessage());
+			}
+		}		
+	}	
+	
+	public List<Ata> listarPorDepartamento(int idDepartamento, Integer idUsuario) throws Exception{
+		if(idUsuario != null){
+			try{
+				AtaDAO dao = new AtaDAO();
+				
+				return dao.listarPorDepartamento(idDepartamento, idUsuario);
+			}catch(Exception e){
+				Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+				
+				throw new Exception(e.getMessage());
+			}
+		}else{
+			try{
+				AtaDAO dao = new AtaDAO();
+				
+				return dao.listarPorDepartamento(idDepartamento);
+			}catch(Exception e){
+				Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+				
+				throw new Exception(e.getMessage());
+			}
+		}
+		
 	}
 	
-	public List<Ata> listarPorOrgao(int idOrgao, int idUsuario) throws Exception{
-		try{
-			AtaDAO dao = new AtaDAO();
-			
-			return dao.listarPorOrgao(idOrgao, idUsuario);
-		}catch(Exception e){
-			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
-			
-			throw new Exception(e.getMessage());
+	public List<Ata> listarPorCampus(int idCampus, Integer idUsuario) throws Exception{
+		if(idUsuario != null){
+			try{
+				AtaDAO dao = new AtaDAO();
+				
+				return dao.listarPorCampus(idCampus, idUsuario);
+			}catch(Exception e){
+				Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+				
+				throw new Exception(e.getMessage());
+			}
+		}else{
+			try{
+				AtaDAO dao = new AtaDAO();
+				
+				return dao.listarPorCampus(idCampus);
+			}catch(Exception e){
+				Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+				
+				throw new Exception(e.getMessage());
+			}
 		}
+		
 	}
 	
-	public List<Ata> listarPorDepartamento(int idDepartamento, int idUsuario) throws Exception{
-		try{
-			AtaDAO dao = new AtaDAO();
-			
-			return dao.listarPorDepartamento(idDepartamento, idUsuario);
-		}catch(Exception e){
-			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
-			
-			throw new Exception(e.getMessage());
-		}
-	}
-	
-	public List<Ata> listarPorCampus(int idCampus, int idUsuario) throws Exception{
-		try{
-			AtaDAO dao = new AtaDAO();
-			
-			return dao.listarPorCampus(idCampus, idUsuario);
-		}catch(Exception e){
-			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
-			
-			throw new Exception(e.getMessage());
-		}
-	}
 	
 	public List<Ata> listar(int idCampus, int idDepartamento, int idOrgao, boolean publicada, int idUsuario) throws Exception{
 		if(publicada){
 			if(idOrgao >0 ){
-				return this.listarPorOrgao(idOrgao);
+				return this.listarPorOrgao(idOrgao, null);
 			}else if(idDepartamento > 0){
-				return this.listarPorDepartamento(idDepartamento);
+				return this.listarPorDepartamento(idDepartamento, null);
 			}else if(idCampus > 0){
-				return this.listarPorCampus(idCampus);
+				return this.listarPorCampus(idCampus, null);
 			}else{
 				return this.listarPublicadas();
 			}
