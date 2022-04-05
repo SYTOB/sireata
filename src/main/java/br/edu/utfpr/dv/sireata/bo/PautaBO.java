@@ -58,19 +58,18 @@ public class PautaBO {
 	}
 	
 	public void excluir(Pauta pauta) throws Exception{
-		this.excluir(pauta.getIdPauta());
-	}
-	
-	public void excluir(int id) throws Exception{
+
 		try{
 			PautaDAO dao = new PautaDAO();
 			
-			dao.excluir(id);
+			dao.excluir( pauta.getIdPauta() );
 		}catch(Exception e){
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 			
 			throw new Exception(e.getMessage());
 		}
 	}
+	
+
 
 }
