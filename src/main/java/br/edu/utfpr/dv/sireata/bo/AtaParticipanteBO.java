@@ -63,20 +63,17 @@ public class AtaParticipanteBO {
 		}
 	}
 	
-	public void excluir(AtaParticipante participante) throws Exception{
-		this.excluir(participante.getIdAtaParticipante());
-	}
-	
-	public void excluir(int id) throws Exception{
+	public void excluir(AtaParticipante participante) throws Exception{		
 		try{
 			AtaParticipanteDAO dao = new AtaParticipanteDAO();
 			
-			dao.excluir(id);
+			dao.excluir(participante.getIdAtaParticipante());
 		}catch(Exception e){
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 			
 			throw new Exception(e.getMessage());
 		}
 	}
+	
 
 }
