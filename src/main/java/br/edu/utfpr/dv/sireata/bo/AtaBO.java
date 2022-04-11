@@ -30,14 +30,23 @@ import br.edu.utfpr.dv.sireata.model.Orgao;
 import br.edu.utfpr.dv.sireata.model.ParticipanteReport;
 
 public class AtaBO {
+
+	private AtaDAO dao;
+
+	public AtaBO(){
+		this.dao = new AtaDAO();
+	}
+
+	private void exception(Exception error){
+		Logger.getGlobal().log(Level.SEVERE, error.getMessage(), error);
+	}
 	
 	public Ata buscarPorId(int id) throws Exception{
 		try{
-			AtaDAO dao = new AtaDAO();
-			
-			return dao.buscarPorId(id);
+
+			return this.dao.buscarPorId(id);
 		}catch(Exception e){
-			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+			exception(e);
 			
 			throw new Exception(e.getMessage());
 		}
@@ -45,11 +54,9 @@ public class AtaBO {
 	
 	public Ata buscarPorNumero(int idOrgao, TipoAta tipo, int numero, int ano) throws Exception{
 		try{
-			AtaDAO dao = new AtaDAO();
-			
-			return dao.buscarPorNumero(idOrgao, tipo, numero, ano);
+			return this.dao.buscarPorNumero(idOrgao, tipo, numero, ano);
 		}catch(Exception e){
-			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+			exception(e);
 			
 			throw new Exception(e.getMessage());
 		}
@@ -57,11 +64,9 @@ public class AtaBO {
 	
 	public Ata buscarPorPauta(int idPauta) throws Exception{
 		try{
-			AtaDAO dao = new AtaDAO();
-			
-			return dao.buscarPorPauta(idPauta);
+			return  this.dao.buscarPorPauta(idPauta);
 		}catch(Exception e){
-			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+			exception(e);
 			
 			throw new Exception(e.getMessage());
 		}
@@ -69,11 +74,9 @@ public class AtaBO {
 	
 	public int buscarProximoNumeroAta(int idOrgao, int ano, TipoAta tipo) throws Exception{
 		try{
-			AtaDAO dao = new AtaDAO();
-			
-			return dao.buscarProximoNumeroAta(idOrgao, ano, tipo);
+			return this.dao.buscarProximoNumeroAta(idOrgao, ano, tipo);
 		}catch(Exception e){
-			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+			exception(e);
 			
 			throw new Exception(e.getMessage());
 		}
@@ -81,11 +84,9 @@ public class AtaBO {
 	
 	public List<Ata> listarPublicadas() throws Exception{
 		try{
-			AtaDAO dao = new AtaDAO();
-			
-			return dao.listarPublicadas();
+			return this.dao.listarPublicadas();
 		}catch(Exception e){
-			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+			exception(e);
 			
 			throw new Exception(e.getMessage());
 		}
@@ -93,11 +94,9 @@ public class AtaBO {
 	
 	public List<Ata> listarNaoPublicadas(int idUsuario) throws Exception{
 		try{
-			AtaDAO dao = new AtaDAO();
-			
-			return dao.listarNaoPublicadas(idUsuario);
+			return this.dao.listarNaoPublicadas(idUsuario);
 		}catch(Exception e){
-			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+			exception(e);
 			
 			throw new Exception(e.getMessage());
 		}
@@ -106,21 +105,17 @@ public class AtaBO {
 	public List<Ata> listarPorOrgao(int idOrgao, Integer idUsuario) throws Exception{
 		if(idUsuario != null){
 			try{
-				AtaDAO dao = new AtaDAO();
-				
-				return dao.listarPorOrgao(idOrgao, idUsuario);
+				return this.dao.listarPorOrgao(idOrgao, idUsuario);
 			}catch(Exception e){
-				Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+				exception(e);
 				
 				throw new Exception(e.getMessage());
 			}
 		}else{
 			try{
-				AtaDAO dao = new AtaDAO();
-				
-				return dao.listarPorOrgao(idOrgao);
+				return this.dao.listarPorOrgao(idOrgao);
 			}catch(Exception e){
-				Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+				exception(e);
 				
 				throw new Exception(e.getMessage());
 			}
@@ -130,21 +125,17 @@ public class AtaBO {
 	public List<Ata> listarPorDepartamento(int idDepartamento, Integer idUsuario) throws Exception{
 		if(idUsuario != null){
 			try{
-				AtaDAO dao = new AtaDAO();
-				
-				return dao.listarPorDepartamento(idDepartamento, idUsuario);
+				return this.dao.listarPorDepartamento(idDepartamento, idUsuario);
 			}catch(Exception e){
-				Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+				exception(e);
 				
 				throw new Exception(e.getMessage());
 			}
 		}else{
 			try{
-				AtaDAO dao = new AtaDAO();
-				
-				return dao.listarPorDepartamento(idDepartamento);
+				return this.dao.listarPorDepartamento(idDepartamento);
 			}catch(Exception e){
-				Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+				exception(e);
 				
 				throw new Exception(e.getMessage());
 			}
@@ -155,21 +146,17 @@ public class AtaBO {
 	public List<Ata> listarPorCampus(int idCampus, Integer idUsuario) throws Exception{
 		if(idUsuario != null){
 			try{
-				AtaDAO dao = new AtaDAO();
-				
-				return dao.listarPorCampus(idCampus, idUsuario);
+				return this.dao.listarPorCampus(idCampus, idUsuario);
 			}catch(Exception e){
-				Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+				exception(e);
 				
 				throw new Exception(e.getMessage());
 			}
 		}else{
 			try{
-				AtaDAO dao = new AtaDAO();
-				
-				return dao.listarPorCampus(idCampus);
+				return this.dao.listarPorCampus(idCampus);
 			}catch(Exception e){
-				Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+				exception(e);
 				
 				throw new Exception(e.getMessage());
 			}
@@ -204,9 +191,8 @@ public class AtaBO {
 	
 	public int salvar(Ata ata) throws Exception{
 		try{
-			AtaDAO dao = new AtaDAO();
-			
-			int id = dao.salvar(ata);
+
+			int id = this.dao.salvar(ata);
 			
 			if(ata.getPauta() != null){
 				int i = 1;
@@ -245,7 +231,7 @@ public class AtaBO {
 			
 			return id;
 		}catch(Exception e){
-			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+			exception(e);
 			
 			throw new Exception(e.getMessage());
 		}
@@ -257,11 +243,9 @@ public class AtaBO {
 	
 	public boolean temComentarios(int idAta) throws Exception{
 		try{
-			AtaDAO dao = new AtaDAO();
-			
-			return dao.temComentarios(idAta);
+			return this.dao.temComentarios(idAta);
 		}catch(Exception e){
-			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+			exception(e);
 			
 			throw new Exception(e.getMessage());
 		}
@@ -269,11 +253,9 @@ public class AtaBO {
 	
 	public boolean isPresidenteOuSecretario(int idUsuario, int idAta) throws Exception{
 		try{
-			AtaDAO dao = new AtaDAO();
-			
-			return dao.isPresidenteOuSecretario(idUsuario, idAta);
+			return this.dao.isPresidenteOuSecretario(idUsuario, idAta);
 		}catch(Exception e){
-			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+			exception(e);
 			
 			throw new Exception(e.getMessage());
 		}
@@ -281,11 +263,9 @@ public class AtaBO {
 	
 	public boolean isPresidente(int idUsuario, int idAta) throws Exception{
 		try{
-			AtaDAO dao = new AtaDAO();
-			
-			return dao.isPresidente(idUsuario, idAta);
+			return this.dao.isPresidente(idUsuario, idAta);
 		}catch(Exception e){
-			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+			exception(e);
 			
 			throw new Exception(e.getMessage());
 		}
@@ -293,11 +273,9 @@ public class AtaBO {
 	
 	public boolean isPublicada(int idAta) throws Exception{
 		try{
-			AtaDAO dao = new AtaDAO();
-			
-			return dao.isPublicada(idAta);
+			return this.dao.isPublicada(idAta);
 		}catch(Exception e){
-			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+			exception(e);
 			
 			throw new Exception(e.getMessage());
 		}
@@ -309,11 +287,9 @@ public class AtaBO {
 	
 	public void liberarComentarios(int idAta) throws Exception{
 		try{
-			AtaDAO dao = new AtaDAO();
-			
-			dao.liberarComentarios(idAta);
+			this.dao.liberarComentarios(idAta);
 		}catch(Exception e){
-			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+			exception(e);
 			
 			throw new Exception(e.getMessage());
 		}
@@ -325,11 +301,9 @@ public class AtaBO {
 	
 	public void bloquearComentarios(int idAta) throws Exception{
 		try{
-			AtaDAO dao = new AtaDAO();
-			
-			dao.bloquearComentarios(idAta);
+			this.dao.bloquearComentarios(idAta);
 		}catch(Exception e){
-			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+			exception(e);
 			
 			throw new Exception(e.getMessage());
 		}
@@ -411,7 +385,7 @@ public class AtaBO {
 			
 			return report;
 		}catch(Exception e){
-			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+			exception(e);
 			
 			throw new Exception(e.getMessage());
 		}
@@ -451,7 +425,7 @@ public class AtaBO {
 				return pdf.toByteArray();				
 			}
 		}catch(Exception e){
-			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+			exception(e);
 			
 			throw new Exception(e.getMessage());
 		}
@@ -468,7 +442,7 @@ public class AtaBO {
 			
 			dao.publicar(idAta, pdf);
 		}catch(Exception e){
-			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+			exception(e);
 			
 			throw new Exception(e.getMessage());
 		}
@@ -487,7 +461,7 @@ public class AtaBO {
 			
 			return dao.excluir(idAta);
 		}catch(Exception e){
-			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+			exception(e);
 			
 			throw new Exception(e.getMessage());
 		}

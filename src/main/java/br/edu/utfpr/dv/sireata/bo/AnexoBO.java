@@ -9,13 +9,22 @@ import br.edu.utfpr.dv.sireata.model.Anexo;
 
 public class AnexoBO {
 
+
+	private AnexoDAO anexoDao;
+
+	public AnexoBO(){
+		this.anexoDao = new AnexoDAO();
+	}
+
+	private void exception(Exception error){
+		Logger.getGlobal().log(Level.SEVERE, error.getMessage(), error);
+	}	
+
 	public Anexo buscarPorId(int id) throws Exception{
 		try{
-			AnexoDAO dao = new AnexoDAO();
-			
-			return dao.buscarPorId(id);
+			return this.anexoDao.buscarPorId(id);
 		}catch(Exception e){
-			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+			exception(e);
 			
 			throw new Exception(e.getMessage());
 		}
@@ -23,11 +32,9 @@ public class AnexoBO {
 	
 	public List<Anexo> listarPorAta(int idAta) throws Exception{
 		try{
-			AnexoDAO dao = new AnexoDAO();
-			
-			return dao.listarPorAta(idAta);
+			return this.anexoDao.listarPorAta(idAta);
 		}catch(Exception e){
-			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+			exception(e);
 			
 			throw new Exception(e.getMessage());
 		}
@@ -50,11 +57,9 @@ public class AnexoBO {
 			
 			this.validarDados(anexo);
 			
-			AnexoDAO dao = new AnexoDAO();
-			
-			return dao.salvar(anexo);
+			return this.anexoDao.salvar(anexo);
 		}catch(Exception e){
-			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+			exception(e);
 			
 			throw new Exception(e.getMessage());
 		}
@@ -66,11 +71,9 @@ public class AnexoBO {
 	
 	public void excluir(int id) throws Exception{
 		try{
-			AnexoDAO dao = new AnexoDAO();
-			
-			dao.excluir(id);
+			this.anexoDao.excluir(id);
 		}catch(Exception e){
-			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+			exception(e);
 			
 			throw new Exception(e.getMessage());
 		}
