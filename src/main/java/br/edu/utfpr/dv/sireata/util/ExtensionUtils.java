@@ -35,14 +35,11 @@ public class ExtensionUtils {
 	private StreamResource downloadFile(String fileName, byte[] content){
 		StreamResource.StreamSource source = new StreamResource.StreamSource() {
             public InputStream getStream() {
-                InputStream input = new ByteArrayInputStream(content);
-                return input;
+                return new ByteArrayInputStream(content);
             }
         };
-        
-        StreamResource resource = new StreamResource(source, fileName);
-        
-        return resource;
+       
+        return new StreamResource(source, fileName);
 	}
 	
 }
