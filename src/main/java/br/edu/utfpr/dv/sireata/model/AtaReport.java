@@ -63,11 +63,15 @@ public class AtaReport {
 		return participantesMembros;
 	}
 	public String getStringParticipantesMembros(){
-		if((this.getParticipantesMembros() != null) && (this.getParticipantesMembros().size() > 0)){
-			String retorno = this.getParticipantesMembros().get(0).getNome();
+
+		List<ParticipanteReport> listParticipante = this.getParticipantesMembros();
+		boolean auxiliar = (listParticipante != null) && (listParticipante.size() > 0) ? true : false;
+
+		if(auxiliar){
+			String retorno = listParticipante.get(0).getNome();
 			
-			for(int i = 1; i < this.getParticipantesMembros().size(); i++){
-				retorno += ", " + this.getParticipantesMembros().get(i).getNome();
+			for(int i = 1; i < listParticipante.size(); i++){
+				retorno += ", " + listParticipante.get(i).getNome();
 			}
 			
 			retorno += ".";
@@ -81,11 +85,15 @@ public class AtaReport {
 		this.participantesMembros = participantesMembros;
 	}
 	public String getStringDemaisParticipantes(){
-		if((this.getDemaisParticipantes() != null) && (this.getDemaisParticipantes().size() > 0)){
-			String retorno = this.getDemaisParticipantes().get(0).getNome();
+
+		List<ParticipanteReport> listDemaisParicipantes = this.getDemaisParticipantes();
+		boolean auxiliar = (listDemaisParicipantes != null) && (listDemaisParicipantes.size() > 0) ? true : false;
+
+		if(auxiliar){
+			String retorno = listDemaisParicipantes.get(0).getNome();
 			
-			for(int i = 1; i < this.getDemaisParticipantes().size(); i++){
-				retorno += ", " + this.getDemaisParticipantes().get(i).getNome();
+			for(int i = 1; i < listDemaisParicipantes.size(); i++){
+				retorno += ", " + listDemaisParicipantes.get(i).getNome();
 			}
 			
 			retorno += ".";
