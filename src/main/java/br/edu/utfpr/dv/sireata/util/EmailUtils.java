@@ -87,8 +87,8 @@ public class EmailUtils {
             props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         }
 
-        Session session = Session.getDefaultInstance(props);
-        MimeMessage message = new MimeMessage(session);
+
+        MimeMessage message = new MimeMessage(Session.getDefaultInstance(props));
 
         try {
             message.setFrom(new InternetAddress(from));

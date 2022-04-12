@@ -20,14 +20,13 @@ public class DateUtils {
 	public static Calendar getNow(){
 		Calendar now = Calendar.getInstance();
 		now.set(Calendar.MILLISECOND, 0);
-		
+
 		return now;
 	}
 	
 	public static int getSemester(){
-		Calendar today = DateUtils.getToday();
-		
-		if(today.get(Calendar.MONTH) >= 6){
+	
+		if(DateUtils.getToday().get(Calendar.MONTH) >= 6){
 			return 2;
 		}else{
 			return 1;
@@ -46,9 +45,7 @@ public class DateUtils {
 	}
 	
 	public static int getYear(){
-		Calendar today = DateUtils.getToday();
-		
-		return today.get(Calendar.YEAR);
+		return DateUtils.getToday().get(Calendar.YEAR);
 	}
 	
 	public static int getDayOfMonth(Date date){
@@ -96,9 +93,7 @@ public class DateUtils {
 	
 	public static String format(Date date, String format){
 		try{
-			DateFormat df = new SimpleDateFormat(format);
-			
-			return df.format(date);
+			return new SimpleDateFormat(format).format(date);
 		}catch(Exception e){
 			return "";
 		}
