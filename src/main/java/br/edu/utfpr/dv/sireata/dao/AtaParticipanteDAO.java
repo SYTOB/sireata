@@ -10,8 +10,8 @@ import java.util.List;
 
 import br.edu.utfpr.dv.sireata.model.AtaParticipante;
 
-public class AtaParticipanteDAO {
-	
+public class AtaParticipanteDAO extends AbstractDAO<AtaParticipante> {
+		
 	public AtaParticipante buscarPorId(int id) throws SQLException{
 		Connection conn = null;
 		PreparedStatement stmt = null;

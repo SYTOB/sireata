@@ -11,7 +11,7 @@ import java.util.List;
 import br.edu.utfpr.dv.sireata.model.Comentario;
 import br.edu.utfpr.dv.sireata.model.Comentario.SituacaoComentario;
 
-public class ComentarioDAO {
+public class ComentarioDAO extends AbstractDAO<Comentario>{
 	
 	public Comentario buscarPorId(int id) throws SQLException{
 		Connection conn = null;

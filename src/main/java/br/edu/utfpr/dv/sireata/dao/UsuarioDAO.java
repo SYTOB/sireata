@@ -10,7 +10,7 @@ import java.util.List;
 
 import br.edu.utfpr.dv.sireata.model.Usuario;
 
-public class UsuarioDAO {
+public class UsuarioDAO extends AbstractDAO<Usuario> {
 	
 	public Usuario buscarPorLogin(String login) throws SQLException{
 		Connection conn = null;

@@ -11,7 +11,7 @@ import java.util.List;
 
 import br.edu.utfpr.dv.sireata.model.Campus;
 
-public class CampusDAO {
+public class CampusDAO extends AbstractDAO<Campus> {
 	
 	public Campus buscarPorId(int id) throws SQLException{
 		Connection conn = null;

@@ -10,7 +10,7 @@ import java.util.List;
 
 import br.edu.utfpr.dv.sireata.model.Pauta;
 
-public class PautaDAO {
+public class PautaDAO extends AbstractDAO<Pauta> {
 	
 	public Pauta buscarPorId(int id) throws SQLException{
 		Connection conn = null;

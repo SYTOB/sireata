@@ -11,7 +11,7 @@ import java.util.List;
 
 import br.edu.utfpr.dv.sireata.model.Departamento;
 
-public class DepartamentoDAO {
+public class DepartamentoDAO extends AbstractDAO<Departamento>{
 
 	public Departamento buscarPorId(int id) throws SQLException{
 		Connection conn = null;
