@@ -7,24 +7,19 @@ import java.util.logging.Logger;
 import br.edu.utfpr.dv.sireata.dao.AnexoDAO;
 import br.edu.utfpr.dv.sireata.model.Anexo;
 
+import br.edu.utfpr.dv.sireata.factory.FactoryDAO;
+
 public class AnexoBO {
 
 
-	private AnexoDAO anexoDao;
-
-	public AnexoBO(){
-		this.anexoDao = new AnexoDAO();
-	}
-
-	private void exception(Exception error){
-		Logger.getGlobal().log(Level.SEVERE, error.getMessage(), error);
-	}	
 
 	public Anexo buscarPorId(int id) throws Exception{
 		try{
-			return this.anexoDao.buscarPorId(id);
+			
+			return (Anexo) FactoryDAO.F_ANEXODAO.getInstance().buscarPorId(id);
+
 		}catch(Exception e){
-			exception(e);
+			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 			
 			throw new Exception(e.getMessage());
 		}
@@ -32,9 +27,11 @@ public class AnexoBO {
 	
 	public List<Anexo> listarPorAta(int idAta) throws Exception{
 		try{
-			return this.anexoDao.listarPorAta(idAta);
+			AnexoDAO anexoDAO = (AnexoDAO) FactoryDAO.F_ANEXODAO.getInstance();
+
+			return anexoDAO.listarPorAta(idAta);
 		}catch(Exception e){
-			exception(e);
+			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 			
 			throw new Exception(e.getMessage());
 		}
@@ -57,9 +54,12 @@ public class AnexoBO {
 			
 			this.validarDados(anexo);
 			
-			return this.anexoDao.salvar(anexo);
+			AnexoDAO anexoDAO = (AnexoDAO) FactoryDAO.F_ANEXODAO.getInstance();
+
+			return anexoDAO.salvar(anexo);
+
 		}catch(Exception e){
-			exception(e);
+			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 			
 			throw new Exception(e.getMessage());
 		}
@@ -71,9 +71,10 @@ public class AnexoBO {
 	
 	public void excluir(int id) throws Exception{
 		try{
-			this.anexoDao.excluir(id);
+			AnexoDAO anexoDAO = (AnexoDAO) FactoryDAO.F_ANEXODAO.getInstance();
+			anexoDAO.excluir(id);
 		}catch(Exception e){
-			exception(e);
+			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 			
 			throw new Exception(e.getMessage());
 		}
