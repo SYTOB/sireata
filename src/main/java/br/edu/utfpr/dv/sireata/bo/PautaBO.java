@@ -7,11 +7,13 @@ import java.util.logging.Logger;
 import br.edu.utfpr.dv.sireata.dao.PautaDAO;
 import br.edu.utfpr.dv.sireata.model.Pauta;
 
+import br.edu.utfpr.dv.sireata.factory.FactoryDAO;
+
 public class PautaBO {
 	
 	public Pauta buscarPorId(int id) throws Exception{
 		try{
-			PautaDAO dao = new PautaDAO();
+			PautaDAO dao = (PautaDAO) FactoryDAO.F_PAUTADAO.getInstance();
 			
 			return dao.buscarPorId(id);
 		}catch(Exception e){
@@ -23,7 +25,7 @@ public class PautaBO {
 	
 	public List<Pauta> listarPorAta(int idAta) throws Exception{
 		try{
-			PautaDAO dao = new PautaDAO();
+			PautaDAO dao = (PautaDAO) FactoryDAO.F_PAUTADAO.getInstance();
 			
 			return dao.listarPorAta(idAta);
 		}catch(Exception e){
@@ -47,7 +49,7 @@ public class PautaBO {
 			
 			this.validarDados(pauta);
 			
-			PautaDAO dao = new PautaDAO();
+			PautaDAO dao = (PautaDAO) FactoryDAO.F_PAUTADAO.getInstance();
 			
 			return dao.salvar(pauta);
 		}catch(Exception e){
@@ -60,7 +62,7 @@ public class PautaBO {
 	public void excluir(Pauta pauta) throws Exception{
 
 		try{
-			PautaDAO dao = new PautaDAO();
+			PautaDAO dao = (PautaDAO) FactoryDAO.F_PAUTADAO.getInstance();
 			
 			dao.excluir( pauta.getIdPauta() );
 		}catch(Exception e){

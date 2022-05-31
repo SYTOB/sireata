@@ -7,11 +7,13 @@ import java.util.logging.Logger;
 import br.edu.utfpr.dv.sireata.dao.CampusDAO;
 import br.edu.utfpr.dv.sireata.model.Campus;
 
+import br.edu.utfpr.dv.sireata.factory.FactoryDAO;
+
 public class CampusBO {
 	
 	public Campus buscarPorId(int id) throws Exception{
 		try{
-			CampusDAO dao = new CampusDAO();
+			CampusDAO dao = (CampusDAO) FactoryDAO.F_CAMPUSDAO.getInstance();
 			
 			return dao.buscarPorId(id);
 		}catch(Exception e){
@@ -23,7 +25,7 @@ public class CampusBO {
 	
 	public Campus buscarPorDepartamento(int idDepartamento) throws Exception{
 		try{
-			CampusDAO dao = new CampusDAO();
+			CampusDAO dao = (CampusDAO) FactoryDAO.F_CAMPUSDAO.getInstance();
 			
 			return dao.buscarPorDepartamento(idDepartamento);
 		}catch(Exception e){
@@ -35,7 +37,7 @@ public class CampusBO {
 	
 	public List<Campus> listarTodos(boolean apenasAtivos) throws Exception{
 		try{
-			CampusDAO dao = new CampusDAO();
+			CampusDAO dao = (CampusDAO) FactoryDAO.F_CAMPUSDAO.getInstance();
 			
 			return dao.listarTodos(apenasAtivos);
 		}catch(Exception e){
@@ -47,7 +49,7 @@ public class CampusBO {
 	
 	public List<Campus> listarParaCriacaoAta(int idUsuario) throws Exception{
 		try{
-			CampusDAO dao = new CampusDAO();
+			CampusDAO dao = (CampusDAO) FactoryDAO.F_CAMPUSDAO.getInstance();
 			
 			return dao.listarParaCriacaoAta(idUsuario);
 		}catch(Exception e){
@@ -59,7 +61,7 @@ public class CampusBO {
 	
 	public List<Campus> listarParaConsultaAtas(int idUsuario) throws Exception{
 		try{
-			CampusDAO dao = new CampusDAO();
+			CampusDAO dao = (CampusDAO) FactoryDAO.F_CAMPUSDAO.getInstance();
 			
 			return dao.listarParaConsultaAtas(idUsuario);
 		}catch(Exception e){
@@ -75,7 +77,7 @@ public class CampusBO {
 		}
 		
 		try{
-			CampusDAO dao = new CampusDAO();
+			CampusDAO dao = (CampusDAO) FactoryDAO.F_CAMPUSDAO.getInstance();
 			
 			return dao.salvar(campus);
 		}catch(Exception e){

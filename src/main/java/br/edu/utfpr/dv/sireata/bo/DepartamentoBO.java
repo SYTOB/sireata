@@ -7,11 +7,13 @@ import java.util.logging.Logger;
 import br.edu.utfpr.dv.sireata.dao.DepartamentoDAO;
 import br.edu.utfpr.dv.sireata.model.Departamento;
 
+import br.edu.utfpr.dv.sireata.factory.FactoryDAO;
+
 public class DepartamentoBO {
 	
 	public Departamento buscarPorId(int id) throws Exception{
 		try{
-			DepartamentoDAO dao = new DepartamentoDAO();
+			DepartamentoDAO dao = (DepartamentoDAO) FactoryDAO.F_DEPARTAMENTODAO.getInstance();
 			
 			return dao.buscarPorId(id);
 		}catch(Exception e){
@@ -23,7 +25,7 @@ public class DepartamentoBO {
 	
 	public Departamento buscarPorOrgao(int idOrgao) throws Exception{
 		try{
-			DepartamentoDAO dao = new DepartamentoDAO();
+			DepartamentoDAO dao = (DepartamentoDAO) FactoryDAO.F_DEPARTAMENTODAO.getInstance();
 			
 			return dao.buscarPorOrgao(idOrgao);
 		}catch(Exception e){
@@ -35,7 +37,7 @@ public class DepartamentoBO {
 	
 	public List<Departamento> listarTodos(boolean apenasAtivos) throws Exception{
 		try{
-			DepartamentoDAO dao = new DepartamentoDAO();
+			DepartamentoDAO dao = (DepartamentoDAO) FactoryDAO.F_DEPARTAMENTODAO.getInstance();
 			
 			return dao.listarTodos(apenasAtivos);
 		}catch(Exception e){
@@ -47,7 +49,7 @@ public class DepartamentoBO {
 	
 	public List<Departamento> listarPorCampus(int idCampus, boolean apenasAtivos) throws Exception{
 		try{
-			DepartamentoDAO dao = new DepartamentoDAO();
+			DepartamentoDAO dao = (DepartamentoDAO) FactoryDAO.F_DEPARTAMENTODAO.getInstance();
 			
 			return dao.listarPorCampus(idCampus, apenasAtivos);
 		}catch(Exception e){
@@ -59,7 +61,7 @@ public class DepartamentoBO {
 	
 	public List<Departamento> listarParaCriacaoAta(int idCampus, int idUsuario) throws Exception{
 		try{
-			DepartamentoDAO dao = new DepartamentoDAO();
+			DepartamentoDAO dao = (DepartamentoDAO) FactoryDAO.F_DEPARTAMENTODAO.getInstance();
 			
 			return dao.listarParaCriacaoAta(idCampus, idUsuario);
 		}catch(Exception e){
@@ -71,7 +73,7 @@ public class DepartamentoBO {
 	
 	public List<Departamento> listarParaConsultaAtas(int idCampus, int idUsuario) throws Exception{
 		try{
-			DepartamentoDAO dao = new DepartamentoDAO();
+			DepartamentoDAO dao = (DepartamentoDAO) FactoryDAO.F_DEPARTAMENTODAO.getInstance();
 			
 			return dao.listarParaConsultaAtas(idCampus, idUsuario);
 		}catch(Exception e){
@@ -90,7 +92,7 @@ public class DepartamentoBO {
 		}
 		
 		try{
-			DepartamentoDAO dao = new DepartamentoDAO();
+			DepartamentoDAO dao = (DepartamentoDAO) FactoryDAO.F_DEPARTAMENTODAO.getInstance();
 			
 			return dao.salvar(departamento);
 		}catch(Exception e){

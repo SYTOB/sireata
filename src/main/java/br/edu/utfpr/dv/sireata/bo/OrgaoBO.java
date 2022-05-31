@@ -9,12 +9,14 @@ import br.edu.utfpr.dv.sireata.model.Orgao;
 import br.edu.utfpr.dv.sireata.model.OrgaoMembro;
 import br.edu.utfpr.dv.sireata.model.Usuario;
 
+import br.edu.utfpr.dv.sireata.factory.FactoryDAO;
+
 public class OrgaoBO {
 	
 	public Orgao buscarPorId(int id) throws Exception{
 		try{
-			OrgaoDAO dao = new OrgaoDAO();
-			
+			OrgaoDAO dao = (OrgaoDAO) FactoryDAO.F_ORGAODAO.getInstance();
+
 			return dao.buscarPorId(id);
 		}catch(Exception e){
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
@@ -25,7 +27,7 @@ public class OrgaoBO {
 	
 	public List<Orgao> listarTodos(boolean apenasAtivos) throws Exception{
 		try{
-			OrgaoDAO dao = new OrgaoDAO();
+			OrgaoDAO dao = (OrgaoDAO) FactoryDAO.F_ORGAODAO.getInstance();
 			
 			return dao.listarTodos(apenasAtivos);
 		}catch(Exception e){
@@ -37,7 +39,7 @@ public class OrgaoBO {
 	
 	public List<Orgao> listarPorDepartamento(int idDepartamento) throws Exception{
 		try{
-			OrgaoDAO dao = new OrgaoDAO();
+			OrgaoDAO dao = (OrgaoDAO) FactoryDAO.F_ORGAODAO.getInstance();
 			
 			return dao.listarPorDepartamento(idDepartamento);
 		}catch(Exception e){
@@ -49,7 +51,7 @@ public class OrgaoBO {
 	
 	public List<Orgao> listarPorCampus(int idCampus) throws Exception{
 		try{
-			OrgaoDAO dao = new OrgaoDAO();
+			OrgaoDAO dao = (OrgaoDAO) FactoryDAO.F_ORGAODAO.getInstance();
 			
 			return dao.listarPorCampus(idCampus);
 		}catch(Exception e){
@@ -61,7 +63,7 @@ public class OrgaoBO {
 	
 	public List<Orgao> listarParaCriacaoAta(int idDepartamento, int idUsuario) throws Exception{
 		try{
-			OrgaoDAO dao = new OrgaoDAO();
+			OrgaoDAO dao = (OrgaoDAO) FactoryDAO.F_ORGAODAO.getInstance();
 			
 			return dao.listarParaCriacaoAta(idDepartamento, idUsuario);
 		}catch(Exception e){
@@ -73,7 +75,7 @@ public class OrgaoBO {
 	
 	public List<Orgao> listarParaConsultaAtas(int idDepartamento, int idUsuario) throws Exception{
 		try{
-			OrgaoDAO dao = new OrgaoDAO();
+			OrgaoDAO dao = (OrgaoDAO) FactoryDAO.F_ORGAODAO.getInstance();
 			
 			return dao.listarParaConsultaAtas(idDepartamento, idUsuario);
 		}catch(Exception e){
@@ -95,7 +97,7 @@ public class OrgaoBO {
 	
 	public Usuario buscarPresidente(int idOrgao) throws Exception{
 		try{
-			OrgaoDAO dao = new OrgaoDAO();
+			OrgaoDAO dao = (OrgaoDAO) FactoryDAO.F_ORGAODAO.getInstance();
 			
 			return dao.buscarPresidente(idOrgao);
 		}catch(Exception e){
@@ -107,7 +109,7 @@ public class OrgaoBO {
 	
 	public Usuario buscarSecretario(int idOrgao) throws Exception{
 		try{
-			OrgaoDAO dao = new OrgaoDAO();
+			OrgaoDAO dao = (OrgaoDAO) FactoryDAO.F_ORGAODAO.getInstance();
 			
 			return dao.buscarSecretario(idOrgao);
 		}catch(Exception e){
@@ -119,7 +121,7 @@ public class OrgaoBO {
 	
 	public boolean isMembro(int idOrgao, int idUsuario) throws Exception{
 		try{
-			OrgaoDAO dao = new OrgaoDAO();
+			OrgaoDAO dao = (OrgaoDAO) FactoryDAO.F_ORGAODAO.getInstance();
 			
 			return dao.isMembro(idOrgao, idUsuario);
 		}catch(Exception e){
@@ -159,7 +161,7 @@ public class OrgaoBO {
 		}
 		
 		try{
-			OrgaoDAO dao = new OrgaoDAO();
+			OrgaoDAO dao = (OrgaoDAO) FactoryDAO.F_ORGAODAO.getInstance();
 			
 			return dao.salvar(orgao);
 		}catch(Exception e){
