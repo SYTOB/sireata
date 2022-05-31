@@ -27,9 +27,9 @@ public class AnexoBO {
 	
 	public List<Anexo> listarPorAta(int idAta) throws Exception{
 		try{
-			AnexoDAO anexoDAO = (AnexoDAO) FactoryDAO.F_ANEXODAO.getInstance();
+			AnexoDAO dao = (AnexoDAO) FactoryDAO.F_ANEXODAO.getInstance();
 
-			return anexoDAO.listarPorAta(idAta);
+			return dao.listarPorAta(idAta);
 		}catch(Exception e){
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 			
@@ -54,9 +54,9 @@ public class AnexoBO {
 			
 			this.validarDados(anexo);
 			
-			AnexoDAO anexoDAO = (AnexoDAO) FactoryDAO.F_ANEXODAO.getInstance();
+			AnexoDAO dao = (AnexoDAO) FactoryDAO.F_ANEXODAO.getInstance();
 
-			return anexoDAO.salvar(anexo);
+			return dao.salvar(anexo);
 
 		}catch(Exception e){
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
@@ -71,8 +71,8 @@ public class AnexoBO {
 	
 	public void excluir(int id) throws Exception{
 		try{
-			AnexoDAO anexoDAO = (AnexoDAO) FactoryDAO.F_ANEXODAO.getInstance();
-			anexoDAO.excluir(id);
+			AnexoDAO dao = (AnexoDAO) FactoryDAO.F_ANEXODAO.getInstance();
+			dao.excluir(id);
 		}catch(Exception e){
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 			

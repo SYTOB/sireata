@@ -35,9 +35,9 @@ public class AtaBO {
 
 	public Ata buscarPorId(int id) throws Exception {
 		try {
-			AtaDAO ataDAO = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
+			AtaDAO dao = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
 
-			return ataDAO.buscarPorId(id);
+			return dao.buscarPorId(id);
 		} catch (Exception e) {
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 
@@ -47,9 +47,9 @@ public class AtaBO {
 
 	public Ata buscarPorNumero(int idOrgao, TipoAta tipo, int numero, int ano) throws Exception {
 		try {
-			AtaDAO ataDAO = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
+			AtaDAO dao = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
 
-			return ataDAO.buscarPorNumero(idOrgao, tipo, numero, ano);
+			return dao.buscarPorNumero(idOrgao, tipo, numero, ano);
 		} catch (Exception e) {
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 
@@ -59,9 +59,9 @@ public class AtaBO {
 
 	public Ata buscarPorPauta(int idPauta) throws Exception {
 		try {
-			AtaDAO ataDAO = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
+			AtaDAO dao = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
 
-			return ataDAO.buscarPorPauta(idPauta);
+			return dao.buscarPorPauta(idPauta);
 		} catch (Exception e) {
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 
@@ -71,9 +71,9 @@ public class AtaBO {
 
 	public int buscarProximoNumeroAta(int idOrgao, int ano, TipoAta tipo) throws Exception {
 		try {
-			AtaDAO ataDAO = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
+			AtaDAO dao = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
 
-			return ataDAO.buscarProximoNumeroAta(idOrgao, ano, tipo);
+			return dao.buscarProximoNumeroAta(idOrgao, ano, tipo);
 		} catch (Exception e) {
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 
@@ -83,8 +83,8 @@ public class AtaBO {
 
 	public List<Ata> listarPublicadas() throws Exception {
 		try {
-			AtaDAO ataDAO = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
-			return ataDAO.listarPublicadas();
+			AtaDAO dao = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
+			return dao.listarPublicadas();
 		} catch (Exception e) {
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 
@@ -94,8 +94,8 @@ public class AtaBO {
 
 	public List<Ata> listarNaoPublicadas(int idUsuario) throws Exception {
 		try {
-			AtaDAO ataDAO = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
-			return ataDAO.listarNaoPublicadas(idUsuario);
+			AtaDAO dao = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
+			return dao.listarNaoPublicadas(idUsuario);
 		} catch (Exception e) {
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 
@@ -106,8 +106,8 @@ public class AtaBO {
 	public List<Ata> listarPorOrgao(int idOrgao, Integer idUsuario) throws Exception {
 		if (idUsuario != null) {
 			try {
-				AtaDAO ataDAO = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
-				return ataDAO.listarPorOrgao(idOrgao, idUsuario);
+				AtaDAO dao = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
+				return dao.listarPorOrgao(idOrgao, idUsuario);
 			} catch (Exception e) {
 				Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 
@@ -115,8 +115,8 @@ public class AtaBO {
 			}
 		} else {
 			try {
-				AtaDAO ataDAO = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
-				return ataDAO.listarPorOrgao(idOrgao);
+				AtaDAO dao = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
+				return dao.listarPorOrgao(idOrgao);
 			} catch (Exception e) {
 				Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 
@@ -128,8 +128,8 @@ public class AtaBO {
 	public List<Ata> listarPorDepartamento(int idDepartamento, Integer idUsuario) throws Exception {
 		if (idUsuario != null) {
 			try {
-				AtaDAO ataDAO = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
-				return ataDAO.listarPorDepartamento(idDepartamento, idUsuario);
+				AtaDAO dao = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
+				return dao.listarPorDepartamento(idDepartamento, idUsuario);
 			} catch (Exception e) {
 				Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 
@@ -137,8 +137,8 @@ public class AtaBO {
 			}
 		} else {
 			try {
-				AtaDAO ataDAO = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
-				return ataDAO.listarPorDepartamento(idDepartamento);
+				AtaDAO dao = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
+				return dao.listarPorDepartamento(idDepartamento);
 			} catch (Exception e) {
 				Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 
@@ -151,8 +151,8 @@ public class AtaBO {
 	public List<Ata> listarPorCampus(int idCampus, Integer idUsuario) throws Exception {
 		if (idUsuario != null) {
 			try {
-				AtaDAO ataDAO = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
-				return ataDAO.listarPorCampus(idCampus, idUsuario);
+				AtaDAO dao = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
+				return dao.listarPorCampus(idCampus, idUsuario);
 			} catch (Exception e) {
 				Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 
@@ -160,8 +160,8 @@ public class AtaBO {
 			}
 		} else {
 			try {
-				AtaDAO ataDAO = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
-				return ataDAO.listarPorCampus(idCampus);
+				AtaDAO dao = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
+				return dao.listarPorCampus(idCampus);
 			} catch (Exception e) {
 				Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 
@@ -198,9 +198,9 @@ public class AtaBO {
 
 	public int salvar(Ata ata) throws Exception {
 		try {
-			AtaDAO ataDAO = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
+			AtaDAO dao = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
 
-			int id = ataDAO.salvar(ata);
+			int id = dao.salvar(ata);
 
 			if (ata.getPauta() != null) {
 				int i = 1;
@@ -252,9 +252,9 @@ public class AtaBO {
 
 	public boolean temComentarios(int idAta) throws Exception {
 		try {
-			AtaDAO ataDAO = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
+			AtaDAO dao = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
 
-			return ataDAO.temComentarios(idAta);
+			return dao.temComentarios(idAta);
 		} catch (Exception e) {
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 
@@ -264,9 +264,9 @@ public class AtaBO {
 
 	public boolean isPresidenteOuSecretario(int idUsuario, int idAta) throws Exception {
 		try {
-			AtaDAO ataDAO = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
+			AtaDAO dao = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
 
-			return ataDAO.isPresidenteOuSecretario(idUsuario, idAta);
+			return dao.isPresidenteOuSecretario(idUsuario, idAta);
 		} catch (Exception e) {
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 
@@ -276,9 +276,9 @@ public class AtaBO {
 
 	public boolean isPresidente(int idUsuario, int idAta) throws Exception {
 		try {
-			AtaDAO ataDAO = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
+			AtaDAO dao = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
 
-			return ataDAO.isPresidente(idUsuario, idAta);
+			return dao.isPresidente(idUsuario, idAta);
 		} catch (Exception e) {
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 
@@ -288,9 +288,9 @@ public class AtaBO {
 
 	public boolean isPublicada(int idAta) throws Exception {
 		try {
-			AtaDAO ataDAO = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
+			AtaDAO dao = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
 
-			return ataDAO.isPublicada(idAta);
+			return dao.isPublicada(idAta);
 		} catch (Exception e) {
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 
@@ -304,8 +304,8 @@ public class AtaBO {
 
 	public void liberarComentarios(int idAta) throws Exception {
 		try {
-			AtaDAO ataDAO = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
-			ataDAO.liberarComentarios(idAta);
+			AtaDAO dao = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
+			dao.liberarComentarios(idAta);
 		} catch (Exception e) {
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 
@@ -319,8 +319,8 @@ public class AtaBO {
 
 	public void bloquearComentarios(int idAta) throws Exception {
 		try {
-			AtaDAO ataDAO = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
-			ataDAO.bloquearComentarios(idAta);
+			AtaDAO dao = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
+			dao.bloquearComentarios(idAta);
 		} catch (Exception e) {
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 
@@ -471,11 +471,11 @@ public class AtaBO {
 
 	public void publicar(int idAta) throws Exception {
 		try {
-			AtaDAO ataDAO = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
+			AtaDAO dao = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
 
 			byte[] pdf = this.gerarAta(idAta);
 
-			ataDAO.publicar(idAta, pdf);
+			dao.publicar(idAta, pdf);
 		} catch (Exception e) {
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 
@@ -492,9 +492,9 @@ public class AtaBO {
 				throw new Exception("A ata já foi publicada e não pode ser excluída.");
 			}
 
-			AtaDAO ataDAO = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
+			AtaDAO dao = (AtaDAO) FactoryDAO.F_ATADAO.getInstance();
 
-			return ataDAO.excluir(idAta);
+			return dao.excluir(idAta);
 		} catch (Exception e) {
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 
